@@ -12,55 +12,63 @@ public class PlayerMovements : MonoBehaviour
 
     [SerializeField] private float movementSpeed = 2f;
     [SerializeField] private float maxSpeed = 2f;
-    private Rigidbody2D rbPlayer;
+    public Rigidbody2D rbPlayer;
     public GameObject firstRock;
 
-    // Start is called before the first frame update
+    [Header("Kick")]
+    public float minForceKick = 5f;
+    public float maxForceKick = 20f;
+    public float currentForceKick = 5f;
+
+
     void Start()
     {
         rbPlayer = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         InputMovements();
-
+        CheckForceKick();
     }
     private void InputMovements()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) KickRock();
-
         Vector2 direction = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-        // rbPlayer.AddForce(direction.normalized * movementSpeed * Time.deltaTime, ForceMode2D.Force);
-        rbPlayer.velocity = direction.normalized * movementSpeed * Time.deltaTime * 800;
-        // if(!LimitSpeed()){
-        //     GetComponent<Rigidbody2D>().velocity = direction.normalized * movementSpeed * Time.deltaTime;
-        // }
-
+        rbPlayer.velocity = direction * movementSpeed;
+    }
+    public Vector3 GetPosition()
+    {
+        return rbPlayer.transform.position;
+    }
+    public void resetPosition()
+    {
+        rbPlayer.position = Vector3.zero;
     }
 
-
-    public void KickRock()
+    private void CheckForceKick()
     {
+        if(Input.GetKey(KeyCode.Space)){
+            if(currentForceKick < maxForceKick){
+                currentForceKick += 10 * Time.deltaTime;
+            }
+        }
+        if(Input.GetKeyUp(KeyCode.Space)) KickRock();
+    }
+
+    private void KickRock()
+    {
+        float attackOffset = 20f;
+        Vector3 attackDir = (UtilsClass.GetMouseWorldPosition() - GetPosition()).normalized;
+        Vector3 targetPosition = GetPosition() + attackDir * attackOffset;
 
         Collider2D[] hitRocks = Physics2D.OverlapCircleAll(attackPoint.position, kickRange, rockLayer);
-
         foreach (Collider2D rock in hitRocks)
         {
-            Debug.Log("Rock : " + rock.name + " kicked");
-            rock.GetComponent<Rigidbody2D>().AddForce(Vector2.right, ForceMode2D.Impulse);
-
+            targetPosition = rock.transform.position;
+            attackDir = (rock.transform.position - GetPosition()).normalized;
+            rock.GetComponent<Rigidbody2D>().AddForce(attackDir * currentForceKick, ForceMode2D.Impulse);
         }
-
-    }
-    private void AssistKickDirection()
-    {
-        CreateSceneParameters parameters = new CreateSceneParameters(LocalPhysicsMode.Physics2D);
-    }
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
+        currentForceKick = minForceKick;
 
     }
     private void OnDrawGizmosSelected()

@@ -4,22 +4,25 @@ using UnityEngine;
 
 public class LineController : MonoBehaviour
 {
-    private LineRenderer lineRenderer;
-    [SerializeField] private Transform[] points;
+    [SerializeField] private Transform[] rocks;
+    public PlayerMovements playerMovements;
 
-    private void Awake() {
-        lineRenderer = GetComponent<LineRenderer>();
-    }
-
-    public void SetUpLine(Transform[] points)
+    private void Update()
     {
-        lineRenderer.positionCount = points.Length;
-        this.points = points;
+        SetUpLine();
     }
-    private void Update() {
-        for (int i = 0; i < points.Length; i++)
+
+    public void SetUpLine()
+    {
+        for (int i = 0; i < rocks.Length; i++)
         {
-            lineRenderer.SetPosition(i, points[i].position);
+            float lineLength = 1.5f;
+            LineRenderer lineRenderer = rocks[i].GetComponent<LineRenderer>();
+            Vector3 startLinePos = rocks[i].position;
+            Vector3 endLinePos = rocks[i].position.normalized - (playerMovements.GetPosition().normalized * lineLength);
+
+            // lineRenderer.SetPosition(0, startLinePos);
+            // lineRenderer.SetPosition(1, endLinePos);
         }
     }
 }

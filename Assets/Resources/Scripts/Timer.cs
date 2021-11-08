@@ -12,10 +12,8 @@ public class Timer : MonoBehaviour
     private float countdownRefresh = 1f;
     private float currentCountDownTime;
 
+    public GameObject panelEndGame;
 
-    private void Start() {
-        StartCountdown();
-    }
     private void Update() {
         CountdownEnable();
     }
@@ -28,16 +26,23 @@ public class Timer : MonoBehaviour
                 currentCountDownTime -= countdownRefresh * Time.deltaTime;
                 textTimer.text = ((int)currentCountDownTime + 1).ToString();
             }
+            if (currentCountDownTime <= 0)
+            {
+                StopCountdown();
+                GameObject.FindObjectOfType<CibleCalculator>().GetScore();
+            }
         }
     }
-    private void StartCountdown()
+    public void StartCountdown()
     {
         currentCountDownTime = startCountDownAt;
         isCountdownEnable = true;
     }
     private void StopCountdown()
     {
+        panelEndGame.SetActive(true);
         isCountdownEnable = false;
+        textTimer.text = ((int)currentCountDownTime).ToString();
         currentCountDownTime = 0;
     }
 }

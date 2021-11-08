@@ -39,6 +39,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Environment
+    uniqueID: 700166671
+    locked: 0
+  - name: Cible
+    uniqueID: 2352755365
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
