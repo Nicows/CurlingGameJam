@@ -9,10 +9,9 @@ public class Timer : MonoBehaviour
     public TMP_Text textTimer;
     [SerializeField] private float startCountDownAt = 30f; 
     private bool isCountdownEnable = false;
-    private float countdownRefresh = 1f;
+    private float countdownRefreshTime = 1f;
     private float currentCountDownTime;
-
-    public GameObject panelEndGame;
+    public StartGameScript startGameScript;
 
     private void Update() {
         CountdownEnable();
@@ -23,7 +22,7 @@ public class Timer : MonoBehaviour
         {
             if (currentCountDownTime > 0)
             {
-                currentCountDownTime -= countdownRefresh * Time.deltaTime;
+                currentCountDownTime -= countdownRefreshTime * Time.deltaTime;
                 textTimer.text = ((int)currentCountDownTime + 1).ToString();
             }
             if (currentCountDownTime <= 0)
@@ -35,14 +34,19 @@ public class Timer : MonoBehaviour
     }
     public void StartCountdown()
     {
+        textTimer.text = ((int)startCountDownAt).ToString();
         currentCountDownTime = startCountDownAt;
         isCountdownEnable = true;
     }
     private void StopCountdown()
     {
-        panelEndGame.SetActive(true);
         isCountdownEnable = false;
         textTimer.text = ((int)currentCountDownTime).ToString();
         currentCountDownTime = 0;
+        startGameScript.DisplayEndGame();
+    }
+    public void RestartCountDown()
+    {
+        StartCountdown();
     }
 }

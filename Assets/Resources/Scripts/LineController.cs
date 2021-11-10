@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class LineController : MonoBehaviour
 {
-    [SerializeField] private Transform[] rocks;
+    private Transform[] rocks;
     public PlayerMovements playerMovements;
 
     private void Update()
     {
-        SetUpLine();
+        // SetUpLine();
     }
 
     public void SetUpLine()

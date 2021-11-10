@@ -9,7 +9,7 @@ public class CibleCalculator : MonoBehaviour
     private GameObject[] allRocks;
     public Collider2D[] colliderCibles;
 
-    public void GetScore()
+    public void CalculateScore()
     {
         GetAllRocks();
         for (int i = 0; i < allRocks.Length; i++)
@@ -19,7 +19,7 @@ public class CibleCalculator : MonoBehaviour
             {
                 layerTouchingName = GetColliderLayerName(allRocks[i], colliderCibles[j], layerTouchingName);
             }
-            GetPoints(layerTouchingName);
+            GetPointsFromCibles(layerTouchingName);
         }
         CalculateHighScore();
     }
@@ -38,7 +38,7 @@ public class CibleCalculator : MonoBehaviour
             return lastLayerTouchingName;
     }
 
-    private void GetPoints(string cible)
+    private void GetPointsFromCibles(string cible)
     {
         switch (cible)
         {
@@ -65,6 +65,10 @@ public class CibleCalculator : MonoBehaviour
         {
             PlayerPrefs.SetInt("HighScore", totalScore);
         }
+    }
+    public float GetScore()
+    {
+        return totalScore;
     }
 
 }

@@ -36,13 +36,17 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Resources\Scripts\StartGameScript.cs" />
      <Compile Include="Assets\Resources\Scripts\PlayerMovements.cs" />
      <Compile Include="Assets\Resources\Scripts\Timer.cs" />
-     <Compile Include="Assets\Resources\Scripts\LineController.cs" />
      <Compile Include="Assets\Resources\Scripts\UtilsClass.cs" />
-     <Compile Include="Assets\Resources\Scripts\SliderController.cs" />
      <Compile Include="Assets\Resources\Scripts\CibleCalculator.cs" />
+     <Compile Include="Assets\Resources\Scripts\SliderController.cs" />
+     <Compile Include="Assets\Resources\Scripts\LineController.cs" />
      <Compile Include="Assets\Resources\Scripts\CibleTrigger.cs" />
+     <Compile Include="Assets\Resources\Scripts\Rock.cs" />
+     <Compile Include="Assets\Resources\Scripts\CameraShake.cs" />
+     <Compile Include="Assets\Resources\Scripts\RocksInteractions.cs" />
      <Compile Include="Assets\Resources\Scripts\MenuInteraction.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
@@ -671,6 +675,9 @@
     <Reference Include="Unity.InternalAPIEditorBridge.001">
         <HintPath>C:\Users\nico_\Desktop\Projets\Projets Unity\GameJams\CurlingGameJam\Library\ScriptAssemblies\Unity.InternalAPIEditorBridge.001.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Postprocessing.Editor">
+        <HintPath>C:\Users\nico_\Desktop\Projets\Projets Unity\GameJams\CurlingGameJam\Library\ScriptAssemblies\Unity.Postprocessing.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor.UI">
         <HintPath>C:\Users\nico_\Desktop\Projets\Projets Unity\GameJams\CurlingGameJam\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
     </Reference>
@@ -688,6 +695,15 @@
     </Reference>
     <Reference Include="Unity.2D.IK.Runtime">
         <HintPath>C:\Users\nico_\Desktop\Projets\Projets Unity\GameJams\CurlingGameJam\Library\ScriptAssemblies\Unity.2D.IK.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Cinemachine">
+        <HintPath>C:\Users\nico_\Desktop\Projets\Projets Unity\GameJams\CurlingGameJam\Library\ScriptAssemblies\Cinemachine.dll</HintPath>
+    </Reference>
+    <Reference Include="com.unity.cinemachine.editor">
+        <HintPath>C:\Users\nico_\Desktop\Projets\Projets Unity\GameJams\CurlingGameJam\Library\ScriptAssemblies\com.unity.cinemachine.editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Postprocessing.Runtime">
+        <HintPath>C:\Users\nico_\Desktop\Projets\Projets Unity\GameJams\CurlingGameJam\Library\ScriptAssemblies\Unity.Postprocessing.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Animation.Triangle.Runtime">
         <HintPath>C:\Users\nico_\Desktop\Projets\Projets Unity\GameJams\CurlingGameJam\Library\ScriptAssemblies\Unity.2D.Animation.Triangle.Runtime.dll</HintPath>
@@ -715,18 +731,6 @@
     </Reference>
     <Reference Include="Unity.2D.SpriteShape.Runtime">
         <HintPath>C:\Users\nico_\Desktop\Projets\Projets Unity\GameJams\CurlingGameJam\Library\ScriptAssemblies\Unity.2D.SpriteShape.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="com.unity.cinemachine.editor">
-        <HintPath>C:\Users\nico_\Desktop\Projets\Projets Unity\GameJams\CurlingGameJam\Library\ScriptAssemblies\com.unity.cinemachine.editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Cinemachine">
-        <HintPath>C:\Users\nico_\Desktop\Projets\Projets Unity\GameJams\CurlingGameJam\Library\ScriptAssemblies\Cinemachine.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Postprocessing.Editor">
-        <HintPath>C:\Users\nico_\Desktop\Projets\Projets Unity\GameJams\CurlingGameJam\Library\ScriptAssemblies\Unity.Postprocessing.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Postprocessing.Runtime">
-        <HintPath>C:\Users\nico_\Desktop\Projets\Projets Unity\GameJams\CurlingGameJam\Library\ScriptAssemblies\Unity.Postprocessing.Runtime.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
