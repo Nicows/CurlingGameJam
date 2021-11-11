@@ -13,7 +13,6 @@ public class StartGameScript : MonoBehaviour
     public GameObject panelEndGame;
     public GameObject panelPause;
     public CibleCalculator cibleCalculator;
-    public RocksInteractions rocksInteractions;
 
 
     // Start is called before the first frame update
@@ -28,13 +27,14 @@ public class StartGameScript : MonoBehaviour
     }
     public void RestartGame()
     {
-        panelEndGame.SetActive(false);
-        panelPause.SetActive(false);
+        // panelEndGame.SetActive(false);
+        // panelPause.SetActive(false);
+        // timerScript.StartCountdown();
+        // playerMovements.resetPosition();
+        // rocksInteractions.RestartInstatiateRocks();
 
         Time.timeScale = 1f;
-        timerScript.StartCountdown();
-        playerMovements.resetPosition();
-        rocksInteractions.InstantiateRocks();
+        SceneManager.LoadScene("MainScene");
     }
     public void Resume()
     {
@@ -47,6 +47,7 @@ public class StartGameScript : MonoBehaviour
     }
     public void LoadMenu()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("Menu");
     }
     public void DisplayEndGame()

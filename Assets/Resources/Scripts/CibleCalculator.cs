@@ -60,7 +60,6 @@ public class CibleCalculator : MonoBehaviour
 
     public void CalculateHighScore()
     {
-        Debug.Log("TotalScore = " + totalScore);
         if (PlayerPrefs.GetInt("HighScore", 0) < totalScore)
         {
             PlayerPrefs.SetInt("HighScore", totalScore);
